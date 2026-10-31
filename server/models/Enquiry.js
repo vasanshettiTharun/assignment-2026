@@ -11,7 +11,7 @@ const enquirySchema = new mongoose.Schema(
       type: String,
       required: [true, 'Enter your phone number'],
       trim: true,
-      match: [/^[6-9]\d{9}$/, 'Enter a valid 10-digit mobile number'],
+      match: [/^\d{10}$/, 'Enter a 10-digit phone number'],
     },
     email: {
       type: String,
