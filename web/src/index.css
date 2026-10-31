@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* Brand colours. Use them as bg-brand, text-brand, bg-brand-light and so on. */
+@theme {
+  --color-brand: #1f6f4a;
+  --color-brand-dark: #16523a;
+  --color-brand-light: #e8f3ed;
+}
+
+body {
+  background-color: #fafaf7;
+  color: #1f2a24;
+}
