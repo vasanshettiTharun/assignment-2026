@@ -6,11 +6,11 @@ A catalogue and enquiry system for a corporate gifting brand. The website and An
 
 | Item | Link |
 |---|---|
-| Live website | TODO |
-| Admin page | TODO (add `/admin` to the website link) |
-| Admin login | TODO username / TODO password |
-| Android APK | TODO |
-| App screen recording | TODO |
+| Live website | https://tribe-green-npq6.onrender.com |
+| Admin page | https://tribe-green-npq6.onrender.com/admin |
+| Admin login | Shared in the submission message, not in this public repo |
+| Android APK | https://drive.google.com/file/d/1MHf75MCNiAiC66Qijw0GjqDnO9PqcNg_/view?usp=sharing |
+| App screen recording | https://drive.google.com/file/d/1-UBhwibOjoUZln64YNOer1yREra7imZz/view?usp=sharing |
 
 ## How to run it
 
@@ -44,7 +44,15 @@ npx expo start --android
 
 To use a local backend from the Android emulator, create `mobile/.env` with `EXPO_PUBLIC_API_URL=http://10.0.2.2:5000`.
 
-**Build the APK:** set the live URL in `mobile/src/config.js`, then run `eas build -p android --profile preview` in the `mobile` folder.
+**Build the APK:** set the live URL in `mobile/src/config.js`, then run these in the `mobile` folder:
+
+```
+npx expo prebuild --platform android
+cd android
+./gradlew assembleRelease
+```
+
+The APK is saved in `android/app/build/outputs/apk/release`. On Windows, this needs long paths turned on and CMake 4.1.2 from the Android SDK Manager, set as `cmake.dir` in `android/local.properties`.
 
 **Deploy:** Render reads `render.yaml`. Add `MONGODB_URI`, `ADMIN_USERNAME` and `ADMIN_PASSWORD` in the Render dashboard, then run `npm run seed` once with `MONGODB_URI` pointing at Atlas.
 
@@ -55,7 +63,7 @@ To use a local backend from the Android emulator, create `mobile/.env` with `EXP
 | Backend | Node, Express | JavaScript across the whole project |
 | Database | MongoDB, Mongoose | Products and enquiries fit simple documents, and all validation sits in the schema |
 | Website and admin | React, Vite, Tailwind CSS | Fast to build, and responsive layouts are simple |
-| Mobile app | React Native, Expo | Reuses React knowledge, and EAS builds the APK |
+| Mobile app | React Native, Expo | Reuses React knowledge, and builds an Android APK from JavaScript |
 | Hosting | Render, MongoDB Atlas | Free, and one service runs both the API and the website |
 
 **Share images:** link previews do not run JavaScript, so a plain React site shows the same preview for every page. Express adds the right title, description and image to `index.html` before sending it. See `server/meta.js`.
