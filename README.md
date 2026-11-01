@@ -76,7 +76,7 @@ Product search on the website and in the app.
 ## Anything incomplete
 
 - Product images are simple illustrations, not photos
-- The WhatsApp number in `web/src/constants.js` is a placeholder until a real number is added
+- No WhatsApp number is set, so the button opens WhatsApp with the message ready and the user picks the contact. Add a number in `web/src/constants.js` to open a direct chat
 - "My enquiries" is saved on the phone, so it does not show status changes made in admin
 
 ## Hours spent
