@@ -48,12 +48,10 @@ export default function CatalogueScreen({ navigation }) {
     setLoading(false)
   }
 
-  // Load the products again whenever a filter changes
   useEffect(() => {
     loadProducts()
   }, [category, occasion, budget])
 
-  // Search only looks at the products already loaded
   const visibleProducts = products.filter((product) =>
     product.name.toLowerCase().includes(search.trim().toLowerCase())
   )

@@ -8,7 +8,6 @@ import { API_URL } from '../config'
 import { BUDGETS, COLORS, CUSTOMISATIONS, OCCASIONS } from '../constants'
 import { saveMyEnquiry } from '../storage'
 
-// Gives the date as 2026-12-25, the same format the website sends
 function toDateText(date) {
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const day = String(date.getDate()).padStart(2, '0')
@@ -51,7 +50,6 @@ export default function EnquiryScreen({ route, navigation }) {
     setForm({ ...form, [field]: value })
   }
 
-  // Adds or removes a value from a list of choices
   function toggleItem(field, value) {
     const list = form[field]
     const newList = list.includes(value) ? list.filter((item) => item !== value) : [...list, value]

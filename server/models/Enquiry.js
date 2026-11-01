@@ -1,8 +1,6 @@
 import mongoose from 'mongoose'
 import { BUDGETS, CUSTOMISATIONS, OCCASIONS, SOURCES, STATUSES } from '../constants.js'
 
-// All the enquiry validation is in this file.
-// The messages below are shown to the user on the website and in the app.
 const enquirySchema = new mongoose.Schema(
   {
     name: { type: String, required: [true, 'Enter your name'], trim: true },
@@ -56,7 +54,7 @@ const enquirySchema = new mongoose.Schema(
     source: { type: String, required: true, enum: SOURCES },
     status: { type: String, enum: STATUSES, default: 'New' },
   },
-  { timestamps: true } // adds createdAt and updatedAt
+  { timestamps: true }
 )
 
 export default mongoose.model('Enquiry', enquirySchema)

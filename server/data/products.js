@@ -1,5 +1,3 @@
-// Made-up products for the test project. Edit this file and run "npm run seed" to update them.
-
 export default [
   {
     name: 'Ceramic Coffee Mug',

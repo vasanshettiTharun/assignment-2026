@@ -47,7 +47,6 @@ export default function Enquiry() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  // Adds or removes a value from a checkbox list
   function toggleItem(field, value) {
     const list = form[field]
     const newList = list.includes(value) ? list.filter((item) => item !== value) : [...list, value]

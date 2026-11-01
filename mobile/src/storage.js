@@ -7,7 +7,6 @@ export async function getMyEnquiries() {
   return saved ? JSON.parse(saved) : []
 }
 
-// Newest enquiry goes first
 export async function saveMyEnquiry(enquiry) {
   const enquiries = await getMyEnquiries()
   await AsyncStorage.setItem(KEY, JSON.stringify([enquiry, ...enquiries]))

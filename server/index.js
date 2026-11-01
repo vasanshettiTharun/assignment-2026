@@ -12,17 +12,15 @@ import { addMetaTags } from './meta.js'
 const app = express()
 const webFolder = path.join(import.meta.dirname, '../web/dist')
 
-app.set('trust proxy', 1) // Render sits in front of our app
+app.set('trust proxy', 1)
 app.use(express.json())
 app.use(cookieParser())
 
-// API
 app.use('/api/products', productRoutes)
 app.use('/api/enquiries', enquiryRoutes)
 app.use('/api/admin', adminRoutes)
 app.use('/api', (req, res) => res.status(404).json({ message: 'Not found' }))
 
-// Website: serves images and JS files. Pages are handled below.
 app.use(express.static(webFolder, { index: false }))
 
 app.get(/.*/, async (req, res) => {
@@ -36,7 +34,6 @@ app.get(/.*/, async (req, res) => {
   res.send(await addMetaTags(html, req.path, siteUrl))
 })
 
-// Turns form mistakes into { errors: { phone: "Enter a valid..." } }
 app.use((err, req, res, next) => {
   if (err.name === 'ValidationError') {
     const errors = {}

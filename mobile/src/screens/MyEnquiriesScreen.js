@@ -7,7 +7,6 @@ import { getMyEnquiries } from '../storage'
 export default function MyEnquiriesScreen() {
   const [enquiries, setEnquiries] = useState([])
 
-  // Reload every time this tab is opened
   useFocusEffect(
     useCallback(() => {
       getMyEnquiries().then(setEnquiries)

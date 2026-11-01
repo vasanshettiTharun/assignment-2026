@@ -19,7 +19,6 @@ export default function Catalogue() {
   const [budget, setBudget] = useState('')
   const [search, setSearch] = useState('')
 
-  // Load the products again whenever a filter changes
   useEffect(() => {
     const params = new URLSearchParams()
     if (category) params.set('category', category)
@@ -38,7 +37,6 @@ export default function Catalogue() {
       .finally(() => setLoading(false))
   }, [category, occasion, budget])
 
-  // Search only looks at the products already loaded
   const visibleProducts = products.filter((product) =>
     product.name.toLowerCase().includes(search.trim().toLowerCase())
   )

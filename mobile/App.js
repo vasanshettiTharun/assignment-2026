@@ -16,7 +16,6 @@ const headerStyle = {
   headerTintColor: '#fff',
 }
 
-// Catalogue tab: list -> product -> enquiry form
 function CatalogueStack() {
   return (
     <Stack.Navigator screenOptions={headerStyle}>

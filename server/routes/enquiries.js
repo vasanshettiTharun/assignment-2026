@@ -3,8 +3,6 @@ import Enquiry from '../models/Enquiry.js'
 
 const router = Router()
 
-// POST /api/enquiries
-// We pick each field by hand so nobody can set "status" from the form.
 router.post('/', async (req, res) => {
   const enquiry = await Enquiry.create({
     name: req.body.name,

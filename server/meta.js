@@ -1,8 +1,5 @@
 import Product from './models/Product.js'
 
-// WhatsApp and other link previews do not run JavaScript, so React cannot
-// set these tags for them. The server writes them into index.html instead.
-
 const SITE_NAME = 'Tribe Green'
 const DEFAULT_DESCRIPTION =
   'Corporate gifts for welcome kits, festive gifting, client gifts and branded merchandise.'
@@ -41,7 +38,6 @@ async function getMeta(path) {
   return PAGES[path] || PAGES['/']
 }
 
-// Swaps the block between the meta comments in index.html for the right tags
 export async function addMetaTags(html, path, siteUrl) {
   const meta = await getMeta(path)
   const title = escapeHtml(meta.title)
@@ -57,5 +53,5 @@ export async function addMetaTags(html, path, siteUrl) {
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />`
 
-  return html.replace(/<!-- meta:start -->[\s\S]*<!-- meta:end -->/, () => tags)
+  return html.replace(/<title>[\s\S]*?<meta name="description"[^>]*>/, () => tags)
 }

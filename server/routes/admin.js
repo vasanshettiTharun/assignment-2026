@@ -6,7 +6,6 @@ import { STATUSES } from '../constants.js'
 
 const router = Router()
 
-// POST /api/admin/login
 router.post('/login', (req, res) => {
   const { username, password } = req.body
 
@@ -16,7 +15,6 @@ router.post('/login', (req, res) => {
 
   const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '1d' })
 
-  // httpOnly means browser JavaScript cannot read this cookie
   res.cookie('token', token, {
     httpOnly: true,
     sameSite: 'lax',
@@ -26,22 +24,18 @@ router.post('/login', (req, res) => {
   res.json({ message: 'Logged in' })
 })
 
-// POST /api/admin/logout
 router.post('/logout', (req, res) => {
   res.clearCookie('token')
   res.json({ message: 'Logged out' })
 })
 
-// Every route below this line needs a login
 router.use(requireAdmin)
 
-// GET /api/admin/enquiries
 router.get('/enquiries', async (req, res) => {
   const enquiries = await Enquiry.find().sort({ createdAt: -1 })
   res.json(enquiries)
 })
 
-// PATCH /api/admin/enquiries/:id  { "status": "Contacted" }
 router.patch('/enquiries/:id', async (req, res) => {
   if (!STATUSES.includes(req.body.status)) {
     return res.status(400).json({ message: 'Invalid status' })
@@ -56,15 +50,12 @@ router.patch('/enquiries/:id', async (req, res) => {
   res.json(enquiry)
 })
 
-// Puts a value in quotes so commas in a message do not break the CSV.
-// A leading ' stops Excel running text like =SUM(...) as a formula.
 function csvCell(value) {
   let text = String(value ?? '')
   if (/^[=+\-@]/.test(text)) text = "'" + text
   return `"${text.replaceAll('"', '""')}"`
 }
 
-// GET /api/admin/enquiries.csv
 router.get('/enquiries.csv', async (req, res) => {
   const enquiries = await Enquiry.find().sort({ createdAt: -1 })
 
@@ -92,7 +83,6 @@ router.get('/enquiries.csv', async (req, res) => {
 
   const lines = [header, ...rows].map((row) => row.map(csvCell).join(','))
 
-  // ﻿ helps Excel show the ₹ sign correctly
   res.attachment('enquiries.csv').type('text/csv').send('﻿' + lines.join('\r\n'))
 })
 

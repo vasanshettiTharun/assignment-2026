@@ -1,5 +1,3 @@
-// Same values as server/constants.js. Keep the files matched.
-
 export const CATEGORIES = ['Drinkware', 'Apparel', 'Work Essentials', 'Wellness']
 
 export const OCCASIONS = [

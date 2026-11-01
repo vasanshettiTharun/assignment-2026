@@ -1,5 +1,3 @@
-// Same values as server/constants.js. Keep the two files matched.
-
 export const CATEGORIES = ['Drinkware', 'Apparel', 'Work Essentials', 'Wellness']
 
 export const OCCASIONS = [
@@ -17,5 +15,4 @@ export const BUDGETS = ['Under ₹500', '₹500 to ₹1,500', '₹1,500 to ₹3,
 
 export const STATUSES = ['New', 'Contacted', 'Converted', 'Lost']
 
-// TODO: put the real WhatsApp number here, with 91 in front and no + sign
 export const WHATSAPP_NUMBER = '910000000000'

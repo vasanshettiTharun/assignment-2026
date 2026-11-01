@@ -1,7 +1,6 @@
 import { Pressable, StyleSheet, Text } from 'react-native'
 import { COLORS } from '../constants'
 
-// A small button that can be switched on and off. Used for filters and form choices.
 export default function Chip({ label, selected, onPress }) {
   return (
     <Pressable onPress={onPress} style={[styles.chip, selected && styles.selected]}>

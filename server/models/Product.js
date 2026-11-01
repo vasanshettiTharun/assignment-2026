@@ -3,7 +3,7 @@ import { CATEGORIES, CUSTOMISATIONS, OCCASIONS } from '../constants.js'
 
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  slug: { type: String, required: true, unique: true }, // used in the page URL
+  slug: { type: String, required: true, unique: true },
   image: { type: String, required: true },
   category: { type: String, required: true, enum: CATEGORIES },
   description: { type: String, required: true },

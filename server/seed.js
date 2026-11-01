@@ -1,4 +1,3 @@
-// Run with "npm run seed". Replaces all products. Enquiries are not touched.
 import 'dotenv/config'
 import mongoose from 'mongoose'
 import Product from './models/Product.js'
