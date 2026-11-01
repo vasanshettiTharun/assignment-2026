@@ -89,4 +89,4 @@ Product search on the website and in the app.
 
 ## Hours spent
 
-TODO
+About 15 hours
